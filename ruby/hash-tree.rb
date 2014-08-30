@@ -2,9 +2,9 @@
 class Tree
   attr_accessor :children, :node_name
 
-  def initialize(name, children=[])
-    @children = children
-    @node_name = name
+  def initialize(tree)
+    tree.each_pair{|name,children| @node_name = name, @children = children}
+
   end
 
   def visit_all(&block)
@@ -17,9 +17,9 @@ class Tree
   end
 end
 
-hash_tree = {'grandpa' =>
-  {'dad' => {'child 1' => {}, 'child 2' => {} },
-  'uncle' => {'child 3' => {}, {'child 4' => {} }}}}
+hash_tree = {'Ole' =>
+  {'Jakob' => {'Frode' => {}, 'Arne' => {} },
+  'Louise' => {'Carla' => {}, 'Oskar' => {} }}}
 
 ruby_tree = Tree.new(hash_tree)
 
